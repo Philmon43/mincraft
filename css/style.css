@@ -46,10 +46,14 @@
     grid-template-columns: repeat(20, 1fr);
 }
 
-.inventory {
+.sidebar {
     width: 10%;
     background: #333;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .box {
@@ -101,4 +105,41 @@
     .inventory {
         width: 100%;
     }
+}
+
+.tools {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tool {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.pickaxe {
+    background: url("../img/pickaxe.png") no-repeat center center/cover;
+}
+
+.shovel {
+    background: url("../img/shovel.png") no-repeat center center/cover;
+}
+
+.axe {
+    background: url("../img/axe.png") no-repeat center center/cover;
+}
+
+.current_inventory {
+    width: 100px;
+    height: 60px;
+    outline: 1px solid white;
+}
+
+.restart{
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
 }
