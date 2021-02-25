@@ -13,7 +13,7 @@ this is my pseudo code for my mincraft solution
 #### third div button
 - here will be the button for reseting or restarting the game
 ## CSS
-css will create handle almost 100% of the stling
+css will  handle almost 100% of the styling
 
 ## JAVACRIPT
 javascript! 
