@@ -164,7 +164,5 @@ const game = (() => {
                 reset.restart()
                 break
         }
-
-        console.log(e.target)
     });
 })();
