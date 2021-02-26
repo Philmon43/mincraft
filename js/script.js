@@ -57,7 +57,6 @@ const landingPage = (() => {
             });
         });
     }
-
     return {
         start: function () {
             return starting()
@@ -65,7 +64,6 @@ const landingPage = (() => {
     }
 })();
 landingPage.start()
-
 //reseting game
 const reset = (() => {
     const reseting = () => {
@@ -83,7 +81,6 @@ const reset = (() => {
         }
     }
 })();
-
 //game play
 const game = (() => {
     const mineCraft = {
@@ -92,7 +89,6 @@ const game = (() => {
         primary: "rgba(0, 47, 255, 0.5)",
         danger: "rgba(255, 0, 0, 0.5)"
     }
-
     //get element remove and add to inventory and display inventory box
     const remove = (t) => {
         const myInventory = document.querySelector(".current_inventory");
@@ -114,10 +110,9 @@ const game = (() => {
     }
     //mining send uodate
     const mining = (el) => updating(el);
-
     //inventory  send update
     const inventory = (el) => updating(el);
-
+    //rout element removing by type axe || pickaxe || shovel
     const removingEl = (el) => {
         //check if there is tool selected
         if (!mineCraft.tool) return
@@ -140,10 +135,12 @@ const game = (() => {
         } else if (toolType === "inventory") {
             const myInventory = document.querySelector(".current_inventory");
             if (mineCraft.inventory.length === 1) {
+                //delete inventory display after last call
                 myInventory.style.backgroundImage = ""
                 myInventory.style.backgroundSize = null
             }
             if (el.classList.length > 1) return
+            //changing inventory bacj background image
             try {
                 el.classList.add(mineCraft.inventory[0].getAttribute("data-name"))
                 mineCraft.inventory.shift();
@@ -153,6 +150,7 @@ const game = (() => {
         }
     }
     document.addEventListener("click", (e) => {
+        //rout type of mode by mining mode || inventory mode || removing element || restarting to default
         switch (e.target.getAttribute("data-type")) {
             case "mining":
                 mining(e.target);
