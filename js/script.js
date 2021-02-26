@@ -138,8 +138,12 @@ const game = (() => {
             }, 300);
             //adding data from inventory back to empty box
         } else if (toolType === "inventory") {
+            const myInventory = document.querySelector(".current_inventory");
             if(mineCraft.inventory.length === 0)return
-            console.log("i am here", el)
+            el.classList.length<2?el.classList.add(mineCraft.inventory[0].getAttribute("data-name")):console.log("nice try");
+            mineCraft.inventory.shift();
+            myInventory.style.backgroundImage = ""
+            myInventory.style.backgroundSize = null
         }
     }
     document.addEventListener("click", (e) => {
