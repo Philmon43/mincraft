@@ -139,11 +139,17 @@ const game = (() => {
             //adding data from inventory back to empty box
         } else if (toolType === "inventory") {
             const myInventory = document.querySelector(".current_inventory");
-            if(mineCraft.inventory.length === 0)return
-            el.classList.length<2?el.classList.add(mineCraft.inventory[0].getAttribute("data-name")):console.log("nice try");
-            mineCraft.inventory.shift();
-            myInventory.style.backgroundImage = ""
-            myInventory.style.backgroundSize = null
+            if (mineCraft.inventory.length === 1) {
+                myInventory.style.backgroundImage = ""
+                myInventory.style.backgroundSize = null
+            }
+            if (el.classList.length > 1) return
+            try {
+                el.classList.add(mineCraft.inventory[0].getAttribute("data-name"))
+                mineCraft.inventory.shift();
+                myInventory.style.backgroundImage = `url("./img/${mineCraft.inventory[0].getAttribute("data-name")}.png")`
+                myInventory.style.backgroundSize = "cover"
+            } catch (e) {}
         }
     }
     document.addEventListener("click", (e) => {
@@ -156,6 +162,9 @@ const game = (() => {
                 break
             case "removing":
                 removingEl(e.target)
+                break
+            case "reset":
+                reset.restart()
                 break
         }
     });
