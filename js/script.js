@@ -27,12 +27,8 @@ const landingPage = (() => {
                 let newBox = document.createElement("div");
                 newBox.classList.add("box")
                 newBox.setAttribute("data-type", "removing")
-                newBox.setAttribute("data-id", i)
                 myWorld.appendChild(newBox)
                 switch (b) {
-                    case 0:
-                        newBox.setAttribute("data-id", "sky")
-                        break
                     case 1:
                         newBox.classList.add("cloud")
                         newBox.setAttribute("data-name", "cloud")
@@ -164,5 +160,7 @@ const game = (() => {
                 reset.restart()
                 break
         }
+
+        console.log(e.target)
     });
 })();
