@@ -132,12 +132,14 @@ const game = (() => {
             //adding data from inventory back to empty box
         } else if (toolType === "inventory") {
             const myInventory = document.querySelector(".current_inventory");
-            if (mineCraft.inventory.length === 1) {
+            if (mineCraft.inventory.length === 0) {
                 //delete inventory display after last call
                 myInventory.style.backgroundImage = ""
                 myInventory.style.backgroundSize = null
             }
-            if (el.classList.length > 1) return
+            console.log("--",el.classList.length)
+            console.log("--",el)
+            if (el.classList[1]) return
             //changing inventory bacj background image
             try {
                 el.classList.add(mineCraft.inventory[0].getAttribute("data-name"))
