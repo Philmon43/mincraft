@@ -122,13 +122,14 @@ const game = (() => {
         }else if(toolType === "axe" && dataName === "trunk" || toolType === "axe" && dataName === "grass"){
             console.log("you can cut")
         }else{
-            console.log("what the fuck are you doing")
+            mineCraft.tool.style.backgroundColor = mineCraft.danger
+            setTimeout(() => {
+                mineCraft.tool.style.backgroundColor = mineCraft.primary
+            }, 300);
         }
         //if not dispaly color red to the tool you cant remove 
         //later remove the element
         //add to inventory
-
-        console.log(toolType, dataId, dataName)
     }
     document.addEventListener("click", (e) => {
         switch (e.target.getAttribute("data-type")) {
