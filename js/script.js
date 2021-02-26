@@ -141,7 +141,7 @@ const game = (() => {
             //changing inventory bacj background image
             try {
                 el.classList.add(mineCraft.inventory[0].getAttribute("data-name"))
-                el.setAttribute("data-name", mineCraft.inventory[0].getAttribute("data-name"));
+                // el.setAttribute("data-name", mineCraft.inventory[0].getAttribute("data-name"));
                 mineCraft.inventory.shift();
                 myInventory.style.backgroundImage = `url("./img/${mineCraft.inventory[0].getAttribute("data-name")}.png")`
                 myInventory.style.backgroundSize = "cover"
