@@ -73,7 +73,7 @@ const reset = (() => {
         try {
             all.forEach(a => a.remove())
         } catch (e) {
-            console.log(e.target)
+            console.log(e)
         }
     }
     return {
@@ -92,57 +92,67 @@ const game = (() => {
         primary: "rgba(0, 47, 255, 0.5)",
         danger: "rgba(255, 0, 0, 0.5)"
     }
-    const mining = (el) => {
+
+    //get element remove and add to inventory and display inventory box
+    const remove = (t) => {
+        const myInventory = document.querySelector(".current_inventory");
+        mineCraft.inventory.unshift(t)
+        t.classList.remove(t.classList[1])
+        myInventory.style.backgroundImage = `url("./img/${mineCraft.inventory[0].getAttribute("data-name")}.png")`
+        myInventory.style.backgroundSize = "cover"
+    }
+    //update
+    const updating = (el) => {
         //try removing if there is prevouse element behavior
         try {
             mineCraft.tool.style.removeProperty("background-color")
         } catch (e) {}
-        //add behavior to current element
+        //updaing tool
         mineCraft.tool = el
+        //add behavior to current element
         mineCraft.tool.style.backgroundColor = mineCraft.primary
     }
-    const building = () => {
-        //get inventory type
-        //check if its editable
-        //add to class to the elemnt selected 
-        //remove from inventory
-        console.log("building")
-    }
+    //mining send uodate
+    const mining = (el) => updating(el);
+
+    //inventory  send update
+    const inventory = (el) => updating(el);
+
     const removingEl = (el) => {
         //check if there is tool selected
         if (!mineCraft.tool) return
         //check if the tool can remove the element
         const toolType = mineCraft.tool.getAttribute("data-tool")
-        const dataId = el.getAttribute("data-id");
         const dataName = el.getAttribute("data-name");
-        if(toolType === "pickaxe" && dataName === "rock"){
-            console.log("you can break")
-        }else if(toolType === "shovel" && dataName === "earth"){
-            console.log("you can dig")
-        }else if(toolType === "axe" && dataName === "trunk" || toolType === "axe" && dataName === "grass"){
-            console.log("you can cut")
-        }else{
+        if (toolType === "pickaxe" && dataName === "rock") {
+            remove(el)
+        } else if (toolType === "shovel" && dataName === "earth") {
+            remove(el)
+        } else if (toolType === "axe" && dataName === "trunk" || toolType === "axe" && dataName === "grass") {
+            remove(el)
+        } else if (mineCraft.tool.getAttribute("data-type") === "mining") {
+            //if not dispaly color red some milisecond
             mineCraft.tool.style.backgroundColor = mineCraft.danger
             setTimeout(() => {
                 mineCraft.tool.style.backgroundColor = mineCraft.primary
             }, 300);
+            //adding data from inventory back to empty box
+        } else if (toolType === "inventory") {
+            if(mineCraft.inventory.length === 0)return
+            console.log("i am here", el)
         }
-        //if not dispaly color red to the tool you cant remove 
-        //later remove the element
-        //add to inventory
     }
     document.addEventListener("click", (e) => {
         switch (e.target.getAttribute("data-type")) {
             case "mining":
                 mining(e.target);
                 break
-            case "building":
-                building(e.target);
+            case "inventory":
+                inventory(e.target);
                 break
             case "removing":
                 removingEl(e.target)
                 break
-
         }
     });
 })();
