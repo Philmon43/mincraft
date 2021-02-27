@@ -43,6 +43,7 @@
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(20, 1fr);
+    background: skyblue;
 }
 
 .sidebar {
@@ -56,7 +57,6 @@
 
 .box {
     color: gray;
-    background: skyblue;
 }
 .box:hover{
     opacity: .9;
@@ -69,27 +69,19 @@
 }
 
 .grass {
-    background: url("../img/grass.png") repeat center center/cover;
-    width: 100%;
-    height: 100%;
+    background: url("../img/grass.png") no-repeat center center/cover;
 }
 
 .trunk {
-    background: url("../img/trunk.png") repeat center center/cover;
-    width: 100%;
-    height: 100%;
+    background: url("../img/trunk.png") no-repeat center center/cover;
 }
 
 .rock {
-    background: url("../img/rock.png") repeat center center/cover;
-    width: 100%;
-    height: 100%;
+    background: url("../img/rock.png") no-repeat center center/cover;
 }
 
 .earth {
-    background: url("../img/earth.png") repeat center center/cover;
-    width: 100%;
-    height: 100%;
+    background: url("../img/earth.png") no-repeat center center/cover;
 }
 .tools{
    display: flex;

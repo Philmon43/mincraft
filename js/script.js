@@ -137,8 +137,6 @@ const game = (() => {
                 myInventory.style.backgroundImage = ""
                 myInventory.style.backgroundSize = null
             }
-            console.log("--",el.classList.length)
-            console.log("--",el)
             if (el.classList[1]) return
             //changing inventory bacj background image
             try {
